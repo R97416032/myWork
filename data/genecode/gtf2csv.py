@@ -1,8 +1,8 @@
 import csv
 from utils.decompress import un_gz
 #解压文件
-file_name="v43/basic/gencode.v43.basic.annotation.gtf.gz"
-
+file_name="v44/all/gencode.v44.chr_patch_hapl_scaff.annotation.gtf.gz"
+path="v44/all/ungz/gencode.v44.chr_patch_hapl_scaff.annotation.gtf"
 #读取gtf文件
 def read(path):
     with open(path, 'r') as gtf:
@@ -25,17 +25,17 @@ def read(path):
                 res.append(temp)
     #去除重复
     genecode=[]
-    names=[]
+    id=[]
     with open(path.replace(".gtf",".csv"), "w", newline='') as file:
         writer=csv.writer(file)
         cols=['type','gene_id','gene_type','gene_name']
         writer.writerow(cols)
         for r in res:
-            if(r[-1] not in names):
+            if(r[1] not in id):
                 genecode.append(r)
-                names.append(r[-1])
+                id.append(r[1])
                 writer.writerow(r)
-un_gz(file_name)
-
+# un_gz(file_name)
+read(path)
 
 

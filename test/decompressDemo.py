@@ -1,7 +1,7 @@
 
 from utils.decompress import *
 
-path="../data/compress/GSE113660_RAW.tar"
+path= "../data/compress/GSE113660/GSE113660_RAW.tar"
 un_tar(path)
 paths=os.listdir(path.replace(".tar",""))
 for p in paths:
